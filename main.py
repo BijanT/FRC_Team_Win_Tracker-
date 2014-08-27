@@ -13,13 +13,14 @@ while trackingTeam:
 		#Continue asking for the team number until a valid team number is entered
 		print("Invalid input. Try again")
 		teamNumber = raw_input()
-	
+	print("")#Add a new line to make things look nice
 	team = Team(teamNumber)
 	
-	print(team.getTeamInfo())
+	print(team.getNickname())
+	print("Rookie Year: " + team.getRookieYear())
 	
 	#Ask the user if he/she wants to track another team
-	print("Do you want to track another team? y/n")
+	print("\nDo you want to track another team? y/n")
 	answer = str(raw_input())
 	#if the input was anything other than 'y' or 'Y,' exit the loop
 	if (answer != "y") and (answer != "Y"):

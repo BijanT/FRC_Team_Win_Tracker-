@@ -26,6 +26,10 @@ class Team:
 		locOfRookieYear = self.teamInfo.find("rookie_year")#find the index location of the "rookie_year"
 		self.rookieYear = self.teamInfo[(locOfRookieYear+14):(locOfRookieYear+18)]#The first number of the rookie year is 14 chars away from the index of "rookie_year" and the last is 18 chars away
 		
+		#Get the years and events the team has participated in
+		self.getYearsParticipated()
+		self.getEvents()
+		
 	def getYearsParticipated(self):
 		#if the years participated list is already filled, just return it
 		if self.yearsParticipated:
@@ -48,10 +52,27 @@ class Team:
 		if self.events:
 			return self.events
 		
-		eventText = ""
-		
 		#Get all the events the team attended since its rookie year 
-	
+		for year in self.yearsParticipated:
+			url = self.baseURL + self.teamKey + "/" + year + "/events"
+			request = urllib2.Request(url, None, self.header)
+			response = urllib2.urlopen(request)
+			rawEvents = response.read()
+			beg = 0#this variable tells the find method where to start looking
+			indexOfKey = 0#this variable holds where each key was found
+			indexOfEnd = 0#this variable holds where the comma signaling the end of the key is
+			while indexOfKey != -1: #index will equal -1 when all of the events were found
+				print(".")#Print a period so the user knows the program is working
+				indexOfKey = rawEvents.find("\"key\"", beg)
+				#Update the beg variable so the find method doesn't find a comma related to something else
+				beg = indexOfKey + 1
+				indexOfEnd = rawEvents.find(",", beg)
+				#Check if indexOfKey is valid before adding it to the list
+				if indexOfKey != -1:
+					self.events.append(rawEvents[(indexOfKey+8):(indexOfEnd-1)])
+				
+		return self.events
+		
 	def getNickname(self):
 		return self.nickname
 		

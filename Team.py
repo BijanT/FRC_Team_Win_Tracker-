@@ -16,14 +16,20 @@ class Team:
 		self.numWins = 0
 		self.numFinals = 0
 		self.numOtherAwards = 0
+		self.nickname = ""
+		self.rookieYear = ""
 		#first request the team information from TBA to find the team's rookie year
 		url = self.baseURL + self.teamKey
 		
 		#Create a request for the team's information
-		request = urllib2.Request(url, None, self.header)
-		response = urllib2.urlopen(request)
-		self.teamInfo = response.read()
-		response.close()
+		try:
+			request = urllib2.Request(url, None, self.header)
+			response = urllib2.urlopen(request)
+			self.teamInfo = response.read()
+			response.close()
+		except urllib2.HTTPError:
+			print("Could not find requested team")
+			return
 		
 		#Search for the team's nickname
 		locOfNickname = self.teamInfo.find("nickname")#finds the index location of "nickname"

@@ -14,11 +14,11 @@ while trackingTeam:
 		print("Invalid input. Try again")
 		teamNumber = raw_input()
 	print("")#Add a new line to make things look nice
+	#Create the instance of the team
 	team = Team(teamNumber)
 	
 	print(team.getNickname())
 	print("Rookie Year: " + team.getRookieYear())
-	
 	#Ask the user if he/she wants to track another team
 	print("\nDo you want to track another team? y/n")
 	answer = str(raw_input())

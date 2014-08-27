@@ -1,0 +1,24 @@
+import urllib2
+
+#trackingTeam will stay true as long as the user wants to look up teams. Will be set to false when the user is done with the program
+trackingTeam = True
+
+while trackingTeam:
+	#find out which team the user wants to track
+	team = ""
+	print("Which team to you want to track?")
+	teamNumber = raw_input()
+	#make sure the input is a valid team number (in this case that means no letters and less than five digits)
+	while (not teamNumber.isdigit()) or (len(teamNumber) >= 5):
+		#Continue asking for the team number until a valid team number is entered
+		print("Invalid input. Try again")
+		teamNumber = raw_input()
+		
+	#Ask the user if he/she wants to track another team
+	print("Do you want to track another team? y/n")
+	answer = str(raw_input())
+	#if the input was anything other than 'y' or 'Y,' exit the loop
+	if (answer != "y") and (answer != "Y"):
+		trackingTeam = False
+		
+print("Goodbye!")

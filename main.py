@@ -19,6 +19,13 @@ while trackingTeam:
 	
 	print(team.getNickname())
 	print("Rookie Year: " + team.getRookieYear())
+	print("Won the Chairman's Award " + team.getNumChairmans() + " time[s]")
+	print("Won Engineering Inspiration " + team.getNumEI() + " time[s]")
+	print("Winner at an event " + team.getNumWins() + " time[s]")
+	print("Finalist at an event " + team.getNumFinals() + " time[s]")
+	print("Won " + team.getNumOtherAwards() + " other award[s]")
+	
+	
 	#Ask the user if he/she wants to track another team
 	print("\nDo you want to track another team? y/n")
 	answer = str(raw_input())

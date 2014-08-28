@@ -19,6 +19,7 @@ while trackingTeam:
 	
 	print(team.getNickname())
 	print("Rookie Year: " + team.getRookieYear())
+	print("Last competed in: " + team.getYearsParticipated()[-1])
 	print("Won the Chairman's Award " + team.getNumChairmans() + " time[s]")
 	print("Won Engineering Inspiration " + team.getNumEI() + " time[s]")
 	print("Winner of an event " + team.getNumWins() + " time[s]")

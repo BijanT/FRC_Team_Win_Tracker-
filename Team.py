@@ -3,7 +3,7 @@ import urllib2
 class Team:
 	def __init__(self, teamNumber):
 		#This is the header required to get data from the blue alliance
-		self.header = {"X-TBA-App-Id" : "bijan_taba:FRC_Team_Win_Tracker:v0.2"}
+		self.header = {"X-TBA-App-Id" : "bijan_taba:FRC_Team_Win_Tracker:v1"}
 		#The base url for the api
 		self.baseURL = "http://www.thebluealliance.com/api/v2/team/"
 		
